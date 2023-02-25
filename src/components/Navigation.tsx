@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { HomeIcon } from '../assets/HomeIcon';
+import { HomeIcon, FolderPlusIcon } from '@heroicons/react/24/solid';
 
 export interface INavigationProps {}
 
@@ -12,7 +12,7 @@ export function Navigation(props: INavigationProps) {
             to={`timeline/`}
             className="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1"
           >
-            <HomeIcon />
+            <FolderPlusIcon className="h-24 w-24 text-blue-500" />
             <span className="tab tab-home block text-xs">Home</span>
           </Link>
 
@@ -20,7 +20,7 @@ export function Navigation(props: INavigationProps) {
             to={`add-post/`}
             className="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1"
           >
-            <HomeIcon />
+            <HomeIcon className="h-24 w-24" />
             <span className="tab tab-home block text-xs">Post</span>
           </Link>
         </div>

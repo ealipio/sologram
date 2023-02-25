@@ -7,12 +7,13 @@ import { Navigation } from '../components/Navigation';
 export default function Layout() {
   const navigate = useNavigate();
 
+  // after login success go to timeLine.
   React.useEffect(() => {
     navigate('/timeline');
   }, []);
 
   return (
-    <div className="w-screen h-screen bg-slate-400 text-red-800">
+    <div className="w-screen h-screen">
       <Header />
       <Outlet />
       <Navigation />

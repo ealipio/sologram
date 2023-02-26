@@ -6,7 +6,7 @@ interface IImageCardProps {
 
 const ImageCard: React.FunctionComponent<IImageCardProps> = ({ imageSrc }) => {
   return (
-    <div className="sm:w-1/4 bg-black flex justify-center items-center w-full">
+    <div className="w-full bg-black flex justify-center items-center">
       <img
         className="bg-contain object-scale-down aspect-[1/1]"
         src={imageSrc}

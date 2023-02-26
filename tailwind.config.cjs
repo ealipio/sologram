@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      sans: ['"Noto Sans JP"'], // replace default font family
-      noto: ['"Noto Sans JP"'],
+      sans: ['"Noto Sans JP"'],
+      oleo: ['"Oleo Script"'],
     },
   },
   plugins: [],

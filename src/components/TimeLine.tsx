@@ -52,9 +52,9 @@ export function TimeLine(props: IHeaderProps) {
     },
   ];
 
-  const PostsList = posts.map((post) => {
+  const PostsList = posts.map((post, i) => {
     return (
-      <div className="mt-4">
+      <div className="mt-4" key={i}>
         <div>{post.title}</div>
         <div>{post.date}</div>
         <div className="px-6">

@@ -7,13 +7,13 @@ import { Navigation } from '../components/Navigation';
 export default function Layout() {
   const navigate = useNavigate();
 
-  // after login success go to timeLine.
+  // after login success or page update go to timeLine.
   React.useEffect(() => {
     navigate('/timeline');
   }, []);
 
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen h-screen overflow-x-hidden">
       <Header />
       <Outlet />
       <Navigation />

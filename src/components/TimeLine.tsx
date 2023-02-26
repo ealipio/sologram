@@ -66,7 +66,7 @@ export function TimeLine(props: IHeaderProps) {
   });
 
   return (
-    <div className="bg-gray-100 h-auto grid sm:grid-cols-3 grid-cols-1">
+    <div className="bg-gray-100 h-auto grid sm:grid-cols-3 grid-cols-1 mt-14 mb-16">
       {PostsList}
     </div>
   );

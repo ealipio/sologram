@@ -54,17 +54,53 @@ export function AddPost(props: IAddPostProps) {
         />
       </div>
 
-      <div className="relative overflow-auto w-full">
+      <div className="relative overflow-auto w-full mb-10 bg-slate-200">
         <div className="flex flex-row gap-2 flex-nowrap">
-          <div className="w-2/5 flex-none h-32 bg-slate-400"> filter 1</div>
-          <div className="w-2/5 flex-none h-32 bg-slate-400"> filter 2</div>
-          <div className="w-2/5 flex-none h-32 bg-slate-400"> filter 3</div>
-          <div className="w-2/5 flex-none h-32 bg-slate-400"> filter 4</div>
-          <div className="w-2/5 flex-none h-32 bg-slate-400"> filter 5</div>
-          <div className="w-2/5 flex-none h-32 bg-slate-400"> filter 6</div>
-          <div className="w-2/5 flex-none h-32 bg-slate-400"> filter 7</div>
-          <div className="w-2/5 flex-none h-32 bg-slate-400"> filter 8</div>
-          <div className="w-2/5 flex-none h-32 bg-slate-400"> filter 9</div>
+          <div className="w-2/5 h-48 flex-none">
+            <div className="font-bold uppercase">Normal</div>
+            <div className="bg-black">
+              <img
+                className="bg-contain object-scale-down aspect-[1/1]"
+                src={VERTICAL_IMG}
+              />
+            </div>
+          </div>
+          <div className="w-2/5 h-48 flex-none">
+            <div className="font-bold uppercase">armageddon</div>
+            <div className="bg-black">
+              <img
+                className="bg-contain object-scale-down aspect-[1/1] hue-rotate-90"
+                src={VERTICAL_IMG}
+              />
+            </div>
+          </div>
+          <div className="w-2/5 h-48 flex-none">
+            <div className="font-bold uppercase">sepia</div>
+            <div className="bg-black">
+              <img
+                className="bg-contain object-scale-down aspect-[1/1] sepia"
+                src={VERTICAL_IMG}
+              />
+            </div>
+          </div>
+          <div className="w-2/5 h-48 flex-none">
+            <div className="font-bold uppercase">b/n</div>
+            <div className="bg-black">
+              <img
+                className="bg-contain object-scale-down aspect-[1/1] grayscale"
+                src={VERTICAL_IMG}
+              />
+            </div>
+          </div>
+          <div className="w-2/5 h-48 flex-none">
+            <div className="font-bold uppercase">tokio</div>
+            <div className="bg-black">
+              <img
+                className="bg-contain object-scale-down aspect-[1/1] brightness-100 saturate-50"
+                src={VERTICAL_IMG}
+              />
+            </div>
+          </div>
         </div>
       </div>
 

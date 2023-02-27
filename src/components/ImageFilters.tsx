@@ -34,7 +34,6 @@ const ImageFilters: React.FunctionComponent<IImageFiltersProps> = ({
     { name: 'normal', className: '' },
     { name: 'armageddon', className: 'hue-rotate-90' },
     { name: 'sepia', className: 'sepia' },
-    { name: 'sepia', className: 'sepia' },
     { name: 'b/n', className: 'grayscale' },
     { name: 'tokio', className: 'brightness-100 saturate-50' },
   ];

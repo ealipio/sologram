@@ -2,9 +2,7 @@ import ImageCard from './ImageCard';
 import { HeartIcon } from '@heroicons/react/24/solid';
 import { useImageStore, IPost } from '../store/imageStore';
 
-export interface IHeaderProps {}
-
-export function TimeLine(props: IHeaderProps) {
+export function TimeLine() {
   const posts = useImageStore((state) => state.posts);
   const likePost = useImageStore((state) => state.likePost);
 
@@ -18,7 +16,11 @@ export function TimeLine(props: IHeaderProps) {
         <div className="text-xs text-gray-400 font-semibold mb-2 ml-1">
           {post.date.toDateString()}
         </div>
-        <ImageCard imageSrc={post.imageURL} />
+        <ImageCard
+          imageSrc={post.imageURL}
+          filterClassName={post.filter}
+          post={post}
+        />
         <div
           className="cursor-pointer absolute right-2 bottom-4"
           onClick={() => {

@@ -6,7 +6,7 @@ export interface IPost {
   imageURL: string;
   date: Date;
   liked: boolean;
-  filter?: string;
+  filter: string;
   id: number;
 }
 
@@ -22,6 +22,7 @@ const posts = [
     title: 'Solarpunk dream',
     date: new Date(),
     imageURL: HORIZONTAL_IMG,
+    filter: 'grayscale',
     liked: true,
   },
   {
@@ -29,6 +30,7 @@ const posts = [
     title: 'Solarpunk dream',
     date: new Date(),
     imageURL: VERTICAL_IMG,
+    filter: 'sepia',
     liked: true,
   },
   {
@@ -36,6 +38,7 @@ const posts = [
     title: 'Solarpunk dream',
     date: new Date(),
     imageURL: GENERIC_IMG,
+    filter: 'hue-rotate-90',
     liked: false,
   },
   {
@@ -43,6 +46,7 @@ const posts = [
     title: 'Solarpunk dream',
     date: new Date(),
     imageURL: VERTICAL_IMG,
+    filter: 'brightness-100 saturate-50',
     liked: false,
   },
 ];

@@ -1,6 +1,8 @@
 import * as React from 'react';
-import ImageCard from './ImageCard';
+import * as timeago from 'timeago.js';
 import { HeartIcon } from '@heroicons/react/24/solid';
+
+import ImageCard from './ImageCard';
 import { IPost } from '../store/imageStore';
 import { useImageStore } from '../store/imageStore';
 
@@ -16,7 +18,7 @@ const Posts: React.FunctionComponent<IPostsProps> = ({ posts }) => {
       <div className="mt-4 relative" key={post.id}>
         <div className="text-sm font-bold ml-1">{post.title}</div>
         <div className="text-xs text-gray-400 font-semibold mb-2 ml-1">
-          {post.date.toDateString()}
+          {timeago.format(new Date(post.date))}
         </div>
         <ImageCard
           imageSrc={post.imageURL}

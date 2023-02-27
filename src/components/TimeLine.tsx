@@ -1,22 +1,35 @@
 import ImageCard from './ImageCard';
 import { HeartIcon } from '@heroicons/react/24/solid';
-import { useImageStore } from '../store/imageStore';
+import { useImageStore, IPost } from '../store/imageStore';
 
 export interface IHeaderProps {}
 
 export function TimeLine(props: IHeaderProps) {
   const posts = useImageStore((state) => state.posts);
+  const likePost = useImageStore((state) => state.likePost);
 
-  const PostsList = posts.map((post, i) => {
+  const handleLikePost = (post: IPost) => {
+    likePost(post);
+  };
+  const PostsList = posts.map((post) => {
     return (
-      <div className="mt-4 relative" key={i}>
+      <div className="mt-4 relative" key={post.id}>
         <div className="text-sm font-bold ml-1">{post.title}</div>
         <div className="text-xs text-gray-400 font-semibold mb-2 ml-1">
           {post.date.toDateString()}
         </div>
         <ImageCard imageSrc={post.imageURL} />
-        <div className="cursor-pointer absolute right-2 bottom-2">
-          <HeartIcon className="text-red-600 -my-10 h-8 w-8 " />
+        <div
+          className="cursor-pointer absolute right-2 bottom-4"
+          onClick={() => {
+            handleLikePost(post);
+          }}
+        >
+          <HeartIcon
+            className={`h-8 w-8 ${
+              post.liked ? 'text-red-600' : 'text-gray-100'
+            }`}
+          />
         </div>
       </div>
     );

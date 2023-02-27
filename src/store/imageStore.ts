@@ -1,47 +1,64 @@
 import { create } from 'zustand';
 import { GENERIC_IMG, HORIZONTAL_IMG, VERTICAL_IMG } from '../constants/routes';
 
-interface ImageItem {
+export interface IPost {
   title: string;
   imageURL: string;
   date: Date;
-  like: boolean;
+  liked: boolean;
   filter?: string;
+  id: number;
 }
 
 interface ImageStore {
-  posts: ImageItem[];
+  posts: IPost[];
+  likePost: (post: IPost) => void;
+  addImage: (post: IPost) => void;
 }
 
 const posts = [
   {
+    id: 1,
     title: 'Solarpunk dream',
     date: new Date(),
     imageURL: HORIZONTAL_IMG,
-    like: false,
+    liked: true,
   },
   {
+    id: 2,
     title: 'Solarpunk dream',
     date: new Date(),
     imageURL: VERTICAL_IMG,
-    like: false,
+    liked: true,
   },
   {
+    id: 3,
     title: 'Solarpunk dream',
     date: new Date(),
     imageURL: GENERIC_IMG,
-    like: false,
+    liked: false,
   },
   {
+    id: 4,
     title: 'Solarpunk dream',
     date: new Date(),
     imageURL: VERTICAL_IMG,
-    like: false,
+    liked: false,
   },
 ];
 
 export const useImageStore = create<ImageStore>((set) => ({
   posts: posts,
-  addImage: (newImage: ImageItem) =>
-    set((prevState) => ({ posts: [...prevState.posts, newImage] })),
+  likePost: (post: IPost) =>
+    set((prevState) => {
+      const updatedPosts = prevState.posts.map((prevPost) => {
+        if (prevPost.id === post.id) {
+          return { ...prevPost, liked: !prevPost.liked };
+        }
+        return prevPost;
+      });
+      return { posts: updatedPosts };
+    }),
+  addImage: (newPost: IPost) =>
+    set((prevState) => ({ posts: [...prevState.posts, newPost] })),
 }));

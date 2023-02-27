@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Layout from './routes/Layout';
 import { AddPost } from './components/AddPost';
-import { TimeLine } from './components/TimeLine';
+import { Posts } from './components/Posts';
 
 import './index.css';
 
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'timeline/',
-        element: <TimeLine />,
+        element: <Posts />,
       },
     ],
   },

@@ -4,57 +4,47 @@ interface IImageFiltersProps {
   imageSrc: string;
 }
 
+interface IFilter {
+  name: string;
+  className: string;
+}
+interface IFilteredItemProp {
+  imageSrc: string;
+  filter: IFilter;
+}
+
+const FilteredItem: React.FC<IFilteredItemProp> = ({ imageSrc, filter }) => {
+  return (
+    <div className="w-2/5 h-48 flex-none">
+      <div className="font-bold uppercase">{filter.name}</div>
+      <div className="bg-black">
+        <img
+          className={`bg-contain object-scale-down aspect-[1/1] ${filter.className}`}
+          src={imageSrc}
+        />
+      </div>
+    </div>
+  );
+};
+
 const ImageFilters: React.FunctionComponent<IImageFiltersProps> = ({
   imageSrc,
 }) => {
+  const filters: IFilter[] = [
+    { name: 'normal', className: '' },
+    { name: 'armageddon', className: 'hue-rotate-90' },
+    { name: 'sepia', className: 'sepia' },
+    { name: 'sepia', className: 'sepia' },
+    { name: 'b/n', className: 'grayscale' },
+    { name: 'tokio', className: 'brightness-100 saturate-50' },
+  ];
+
   return (
     <div className="relative overflow-auto w-full mb-1">
       <div className="flex flex-row gap-2 flex-nowrap">
-        <div className="w-2/5 h-48 flex-none">
-          <div className="font-bold uppercase">Normal</div>
-          <div className="bg-black">
-            <img
-              className="bg-contain object-scale-down aspect-[1/1]"
-              src={imageSrc}
-            />
-          </div>
-        </div>
-        <div className="w-2/5 h-48 flex-none">
-          <div className="font-bold uppercase">armageddon</div>
-          <div className="bg-black">
-            <img
-              className="bg-contain object-scale-down aspect-[1/1] hue-rotate-90"
-              src={imageSrc}
-            />
-          </div>
-        </div>
-        <div className="w-2/5 h-48 flex-none">
-          <div className="font-bold uppercase">sepia</div>
-          <div className="bg-black">
-            <img
-              className="bg-contain object-scale-down aspect-[1/1] sepia"
-              src={imageSrc}
-            />
-          </div>
-        </div>
-        <div className="w-2/5 h-48 flex-none">
-          <div className="font-bold uppercase">b/n</div>
-          <div className="bg-black">
-            <img
-              className="bg-contain object-scale-down aspect-[1/1] grayscale"
-              src={imageSrc}
-            />
-          </div>
-        </div>
-        <div className="w-2/5 h-48 flex-none">
-          <div className="font-bold uppercase">tokio</div>
-          <div className="bg-black">
-            <img
-              className="bg-contain object-scale-down aspect-[1/1] brightness-100 saturate-50"
-              src={imageSrc}
-            />
-          </div>
-        </div>
+        {filters.map((filter, index) => (
+          <FilteredItem key={index} filter={filter} imageSrc={imageSrc} />
+        ))}
       </div>
     </div>
   );

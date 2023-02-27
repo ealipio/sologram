@@ -1,45 +1,20 @@
 import ImageCard from './ImageCard';
 import { HeartIcon } from '@heroicons/react/24/solid';
-import { GENERIC_IMG, HORIZONTAL_IMG, VERTICAL_IMG } from '../constants/routes';
+import { useImageStore } from '../store/imageStore';
 
 export interface IHeaderProps {}
 
 export function TimeLine(props: IHeaderProps) {
-  const posts = [
-    {
-      title: 'Solarpunk dream',
-      date: 'Posted just now',
-      src: HORIZONTAL_IMG,
-      like: false,
-    },
-    {
-      title: 'Solarpunk dream',
-      date: 'Posted just now',
-      src: VERTICAL_IMG,
-      like: false,
-    },
-    {
-      title: 'Solarpunk dream',
-      date: 'Posted just now',
-      src: GENERIC_IMG,
-      like: false,
-    },
-    {
-      title: 'Solarpunk dream',
-      date: 'Posted just now',
-      src: VERTICAL_IMG,
-      like: false,
-    },
-  ];
+  const posts = useImageStore((state) => state.posts);
 
   const PostsList = posts.map((post, i) => {
     return (
       <div className="mt-4 relative" key={i}>
         <div className="text-sm font-bold ml-1">{post.title}</div>
         <div className="text-xs text-gray-400 font-semibold mb-2 ml-1">
-          {post.date}
+          {post.date.toDateString()}
         </div>
-        <ImageCard imageSrc={post.src} />
+        <ImageCard imageSrc={post.imageURL} />
         <div className="cursor-pointer absolute right-2 bottom-2">
           <HeartIcon className="text-red-600 -my-10 h-8 w-8 " />
         </div>

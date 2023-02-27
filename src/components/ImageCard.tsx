@@ -4,10 +4,10 @@ import { useLikeInDoubleTap } from '../hooks/useLikeInDoubleTap';
 interface IImageCardProps {
   imageSrc: string;
   post?: IPost;
-  filterClassName?: string;
+  filterClassName: string;
 }
 
-const ImageCard: React.FunctionComponent<IImageCardProps> = ({
+const ImageCard: React.FC<IImageCardProps> = ({
   imageSrc,
   filterClassName = '',
   post,

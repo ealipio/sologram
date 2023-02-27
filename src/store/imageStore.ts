@@ -1,5 +1,9 @@
 import { create } from 'zustand';
-import { GENERIC_IMG, HORIZONTAL_IMG, VERTICAL_IMG } from '../constants/routes';
+import {
+  GENERIC_IMG,
+  HORIZONTAL_IMG,
+  VERTICAL_IMG,
+} from '../constants/messages';
 
 export interface IPost {
   title: string;
@@ -13,7 +17,7 @@ export interface IPost {
 interface ImageStore {
   posts: IPost[];
   likePost: (post: IPost) => void;
-  addImage: (post: IPost) => void;
+  addPost: (post: IPost) => void;
 }
 
 const posts = [
@@ -63,6 +67,6 @@ export const useImageStore = create<ImageStore>((set) => ({
       });
       return { posts: updatedPosts };
     }),
-  addImage: (newPost: IPost) =>
+  addPost: (newPost: IPost) =>
     set((prevState) => ({ posts: [...prevState.posts, newPost] })),
 }));

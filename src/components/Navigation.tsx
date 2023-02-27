@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { HomeIcon, PlusIcon } from '@heroicons/react/24/solid';
-import { TIME_LINE, ADD_POST } from '../constants/routes';
+import { TIME_LINE, ADD_POST } from '../constants/messages';
 
 export interface INavigationProps {}
 

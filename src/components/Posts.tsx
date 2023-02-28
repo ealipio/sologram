@@ -12,8 +12,6 @@ export const Posts: React.FunctionComponent<IPostsProps> = () => {
   const likePost = useImageStore((state) => state.likePost);
   const posts = useImageStore((state) => state.posts);
 
-  const [hasMore, setHasMore] = React.useState<boolean>(posts.length > 0);
-
   const [counter, setCounter] = React.useState<number>(2);
 
   // infinite scroll implementation
@@ -28,7 +26,7 @@ export const Posts: React.FunctionComponent<IPostsProps> = () => {
       });
       if (node) observer.current.observe(node);
     },
-    [hasMore, counter]
+    [counter]
   );
 
   const list = posts.map((post: IPost, index) => {

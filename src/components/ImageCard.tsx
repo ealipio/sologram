@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { IPost } from '../store/imageStore';
 import { useLikeInDoubleTap } from '../hooks/useLikeInDoubleTap';
 interface IImageCardProps {

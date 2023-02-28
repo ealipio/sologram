@@ -21,8 +21,8 @@ export const useImageStore = create<ImageStore>()(
     (set) => ({
       posts: [],
       likePost: (post: IPost) =>
-        set((prevState) => {
-          const updatedPosts = prevState.posts.map((prevPost) => {
+        set((currentState) => {
+          const updatedPosts = currentState.posts.map((prevPost) => {
             if (prevPost.id === post.id) {
               return { ...prevPost, liked: !prevPost.liked };
             }
@@ -31,7 +31,7 @@ export const useImageStore = create<ImageStore>()(
           return { posts: updatedPosts };
         }),
       addPost: (newPost: IPost) =>
-        set((prevState) => ({ posts: [...prevState.posts, newPost] })),
+        set((currentState) => ({ posts: [...currentState.posts, newPost] })),
     }),
     {
       name: 'sologram',

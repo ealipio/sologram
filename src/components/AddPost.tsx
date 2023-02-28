@@ -7,26 +7,20 @@ import { IMAGE_ERROR, PLACEHOLDER_IMG, TIME_LINE } from '../constants/messages';
 
 import ImageCard from './ImageCard';
 import ImageFilters from './ImageFilters';
-import { isValidUrl } from '../utils/url';
+import { isValidUrl, getDefaultTitle } from '../utils/url';
 
-export interface IAddPostProps {}
-
-interface IFormData {
-  title: string;
-  filterClassName: string;
-}
 const DEFAULT_DATA = {
   title: '',
   imageURL: '',
   filterClassName: '',
 };
-export function AddPost(props: IAddPostProps) {
-  const [formData, setFormData] = useState<IFormData>(DEFAULT_DATA);
+
+export const AddPost: React.FC = () => {
   const [filterClassName, setFilterClassName] = useState<string>('');
   const [imageURL, setImageURL] = useState<string>('');
+  const [title, setTitle] = useState<string>('');
   const addPost = useImageStore((state) => state.addPost);
 
-  const { title } = formData;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,8 +39,9 @@ export function AddPost(props: IAddPostProps) {
     e.preventDefault();
 
     const date = new Date();
+
     const dataToSave = {
-      ...formData,
+      title,
       imageURL,
       filter: filterClassName,
       date,
@@ -55,19 +50,22 @@ export function AddPost(props: IAddPostProps) {
     };
     addPost(dataToSave);
     //@todo: show a message that item was saved
-    // restart data
-    setFormData(DEFAULT_DATA);
     setImageURL(DEFAULT_DATA.imageURL);
+    setTitle(DEFAULT_DATA.title);
+
     navigate(`/${TIME_LINE}`);
   };
 
   const onChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setImageURL(e.target.value);
+    const url = e.target.value;
+    setImageURL(url);
+    if (isValidUrl(url)) {
+      setTitle(getDefaultTitle(url));
+    }
   };
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prevState) => {
-      return { ...prevState, [e.target.name]: e.target.value };
-    });
+
+  const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
   };
 
   const handleFilterSelected = (filterClassName: string) => {
@@ -107,9 +105,8 @@ export function AddPost(props: IAddPostProps) {
             <input
               className="p-2 border w-full font-bold"
               type="text"
-              onChange={onChange}
+              onChange={onChangeTitle}
               value={title}
-              name="title"
             />
           </div>
         )}
@@ -121,7 +118,7 @@ export function AddPost(props: IAddPostProps) {
           />
         )}
 
-        {imageURL && isValidUrl(imageURL) && (
+        {imageURL && isValidUrl(imageURL) && title && (
           <div className="w-full mx-auto  p-2">
             <button
               type="submit"
@@ -134,4 +131,4 @@ export function AddPost(props: IAddPostProps) {
       </form>
     </div>
   );
-}
+};

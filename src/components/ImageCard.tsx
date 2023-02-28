@@ -21,6 +21,7 @@ const ImageCard: React.FC<IImageCardProps> = ({
     >
       <img
         className="bg-contain object-scale-down aspect-[1/1]"
+        loading="lazy"
         src={imageSrc}
       />
     </div>
